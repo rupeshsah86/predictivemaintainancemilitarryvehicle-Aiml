@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Predictive Maintenance</title>
+    <!-- ADD THIS LINE -->
+   <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Predictive Maintenance Result</h1>
+            <p class="subtitle">Analysis completed successfully</p>
+        </header>
+        
+        <main>
+            <div class="result-card">
+                <div class="result-header">
+                    <h2>Prediction Result</h2>
+                    <div class="status-indicator" data-status="{{ prediction_message | lower }}">
+                        <!-- Status will be styled with CSS later -->
+                    </div>
+                </div>
+                
+                <div class="result-content">
+                    <div class="prediction-message">
+                        <h3>Maintenance Status:</h3>
+                        <p class="message-text">{{ prediction_message }}</p>
+                    </div>
+                    
+                    <div class="accuracy-info">
+                        <h3>Model Performance:</h3>
+                        <div class="accuracy-display">
+                            <span class="accuracy-value">{{ accuracy*100 }}%</span>
+                            <span class="accuracy-label">Confidence Score</span>
+                        </div>
+                        <div class="accuracy-bar">
+                            <div class="accuracy-fill" style="width: {{ accuracy*100 }}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <h3>Recommended Actions:</h3>
+                        <ul class="action-list">
+                            <li>Review equipment parameters</li>
+                            <li>Schedule maintenance if needed</li>
+                            <li>Monitor performance indicators</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Input Form</a>
+                    <button class="btn btn-secondary" onclick="window.print()">Print Report</button>
+                </div>
+            </div>
+            
+            <div class="additional-info">
+                <details>
+                    <summary>Technical Details</summary>
+                    <div class="technical-content">
+                        <p>This prediction was generated using machine learning algorithms trained on historical maintenance data.</p>
+                        <p>For questions about this result, please contact your maintenance supervisor.</p>
+                    </div>
+                </details>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Predictive Maintenance System. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

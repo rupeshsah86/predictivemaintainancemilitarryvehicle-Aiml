@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance Input</title>
+    <!-- ADD THIS LINE -->
+   <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Predictive Maintenance Input</h1>
+            <p class="subtitle">Enter equipment parameters to predict maintenance needs</p>
+        </header>
+        
+        <main>
+            <form action="/predict" method="post" class="maintenance-form">
+                <fieldset>
+                    <legend>Equipment Parameters</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="air_temperature">Air Temperature [K]:</label>
+                            <input type="number" step="any" id="air_temperature" name="air_temperature" required>
+                            <small class="input-hint">Enter temperature in Kelvin</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="process_temperature">Process Temperature [K]:</label>
+                            <input type="number" step="any" id="process_temperature" name="process_temperature" required>
+                            <small class="input-hint">Enter temperature in Kelvin</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rotational_speed">Rotational Speed [rpm]:</label>
+                            <input type="number" step="any" id="rotational_speed" name="rotational_speed" required>
+                            <small class="input-hint">Revolutions per minute</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="torque">Torque [Nm]:</label>
+                            <input type="number" step="any" id="torque" name="torque" required>
+                            <small class="input-hint">Newton meters</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tool_wear">Tool Wear [min]:</label>
+                        <input type="number" step="any" id="tool_wear" name="tool_wear" required>
+                        <small class="input-hint">Tool wear duration in minutes</small>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Product Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product_id">Product ID:</label>
+                            <input type="text" id="product_id" name="product_id" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <input type="text" id="type" name="type" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="udi">UDI:</label>
+                            <input type="number" id="udi" name="udi" required>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Failure Information (Optional)</legend>
+                    
+                    <div class="form-group">
+                        <label for="failure_type">Failure Type (if known):</label>
+                        <input type="text" id="failure_type" name="failure_type">
+                        <small class="input-hint">Leave blank if unknown</small>
+                    </div>
+                </fieldset>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Predict Maintenance</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
